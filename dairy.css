@@ -1,0 +1,265 @@
+body {
+    font-family: 'Arial, sans-serif';
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: url('bg.jpg') no-repeat center center;
+    /* Full-screen background image */
+    background-size: cover;
+}
+
+.book {
+    width: 80%;
+    height: 80%;
+    position: relative;
+    perspective: 2000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.5);
+    /* Transparent white background */
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    backface-visibility: hidden;
+    border: 2px solid #000000;
+    /* Border added */
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cover and final page styles with background images */
+.cover-page,
+.final-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    /* Ensure background covers the page */
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    /* Ensure text is visible on dark backgrounds */
+}
+
+.cover-page {
+    background-image: url('photo1.jpg');
+    /* Cover page background */
+}
+
+.final-page {
+    background-image: url('photo14.jpg');
+    /* Final page background */
+}
+
+.cover-page h1,
+.cover-page p,
+.final-page p {
+    margin: 0;
+    padding: 0;
+}
+
+.cover-page h1 {
+    font-size: 2em;
+    /* Adjust as needed */
+    color: #000000;
+}
+
+.cover-page p {
+    font-size: 1.4em;
+    /* Adjust as needed */
+}
+
+.final-page p {
+    font-size: 2em;
+    color:white;
+    /* Adjust as needed */
+    text-align: center;
+}
+
+.content {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-direction: row;
+    position: relative;
+}
+
+.left,
+.right {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #007bff;
+    /* Border added */
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.left::before,
+.right::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(8px);
+    /* Apply blur effect */
+    z-index: -1;
+    /* Ensure background is behind content */
+}
+
+.left img,
+.right img {
+    max-width: 100%;
+    max-height: 80%;
+    border-radius: 10px;
+    object-fit: cover;
+    /* Ensure image covers the container */
+}
+
+.description {
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+
+.footer {
+    text-align: center;
+    color: #040404;
+    font-size: 18px;
+    margin: 20px;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 4;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .book {
+        width: 90%;
+        /* Adjust width for better fit on mobile */
+        height: 90%;
+    }
+
+    .page {
+        width: 100%;
+        height: auto;
+        /* Allow height to adjust automatically */
+    }
+
+    .cover-page,
+    .final-page {
+        background-size: cover;
+        /* Ensure background covers the page */
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        /* Full viewport height */
+        width: 100vw;
+        /* Full viewport width */
+        padding: 0;
+        /* Remove padding */
+    }
+
+    .content {
+        flex-direction: column;
+        /* Stack containers vertically */
+        align-items: stretch;
+        /* Ensure containers stretch to full width */
+        height: 100%;
+        /* Allow content to stretch fully */
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        /* Full width on mobile */
+        height: 50%;
+        /* Adjust height for better fit */
+        border: 2px solid #007bff;
+        /* Keep borders */
+    }
+
+    .left img,
+    .right img {
+        max-height: 100%;
+        /* Ensure images fit within the containers */
+    }
+
+    .description {
+        font-size: 14px;
+        /* Adjust font size for better readability */
+    }
+
+    .cover-page h1,
+    .cover-page p {
+        font-size: 18px;
+        /* Adjust font size for the cover page text */
+        text-align: center;
+        margin: 10px;
+    }
+
+    .final-page p {
+        font-size: 18px;
+        /* Adjust font size for the final page text */
+    }
+}
+
+/* Music button styles */
+.music-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 10;
+}
+
+.music-button:hover {
+    background-color: #0056b3;
+}
